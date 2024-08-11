@@ -25,6 +25,8 @@ app.listen(port, function () {
 
 app.use(express.urlencoded());
 
+let shortened_urls = [];
+
 app.post('/api/shorturl', (req, res) => {
     const originalUrl = req.body.url
     if (!originalUrl.match(/^https:\/\/.{2,}\.com$/gm)) {
@@ -33,8 +35,9 @@ app.post('/api/shorturl', (req, res) => {
         })
         return;
     }
+    shortened_urls.push(originalUrl);
     res.json({
         original_url: originalUrl,
-        short_url: '',
+        short_url: shortened_urls.indexOf(originalUrl),
     })
 })
