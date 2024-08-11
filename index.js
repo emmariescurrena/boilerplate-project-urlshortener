@@ -29,7 +29,7 @@ let shortened_urls = [];
 
 app.post('/api/shorturl', (req, res) => {
     const originalUrl = req.body.url
-    if (!originalUrl.match(/^https:\/\/.{2,}\.com$/gm)) {
+    if (!originalUrl.match(/^https?:\/\/.{2,}\.com$/gm)) {
         res.json({
             error: 'invalid url'
         })
