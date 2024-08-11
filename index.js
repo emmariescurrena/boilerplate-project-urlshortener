@@ -42,6 +42,6 @@ app.post('/api/shorturl', (req, res) => {
     })
 })
 
-app.get('/api/:shorturl', (req, res) => {
+app.get('/api/shorturl/:shorturl', (req, res) => {
     res.redirect(shortened_urls[req.params.shorturl]);
 })
